@@ -20,9 +20,39 @@
             @endif
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+
+                <form method="GET" action="{{ route('applications.index') }}" class="flex flex-wrap gap-3 mb-6">
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request('search') }}"
+                        placeholder="Search company or position..."
+                        class="flex-1 min-w-[200px] rounded-md border-gray-300 dark:bg-gray-700 dark:text-white text-sm"
+                    >
+
+                    <select name="status" class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white text-sm">
+                        <option value="">All Statuses</option>
+                        @foreach (['applied', 'interviewing', 'offer', 'rejected', 'withdrawn'] as $status)
+                            <option value="{{ $status }}" {{ request('status') == $status ? 'selected' : '' }}>
+                                {{ ucfirst($status) }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-md text-sm">
+                        Filter
+                    </button>
+
+                    @if (request('search') || request('status'))
+                        <a href="{{ route('applications.index') }}" class="text-sm text-gray-500 hover:underline self-center">
+                            Clear
+                        </a>
+                    @endif
+                </form>
+
                 @if ($applications->isEmpty())
                     <p class="text-gray-500 dark:text-gray-400">
-                        No applications yet. Click "New Application" to add your first one.
+                        No applications match your search.
                     </p>
                 @else
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -65,6 +95,10 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="mt-6">
+                        {{ $applications->links() }}
+                    </div>
                 @endif
             </div>
         </div>

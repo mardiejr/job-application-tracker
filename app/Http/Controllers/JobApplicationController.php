@@ -9,12 +9,22 @@ use Illuminate\Http\Request;
 
 class JobApplicationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $applications = JobApplication::where('user_id', auth()->id())
             ->with('company')
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $query->where('position', 'like', '%' . $request->search . '%')
+                    ->orWhereHas('company', function ($q) use ($request) {
+                        $q->where('name', 'like', '%' . $request->search . '%');
+                    });
+            })
+            ->when($request->filled('status'), function ($query) use ($request) {
+                $query->where('status', $request->status);
+            })
             ->latest()
-            ->get();
+            ->paginate(10)
+            ->withQueryString();
 
         return view('applications.index', compact('applications'));
     }
