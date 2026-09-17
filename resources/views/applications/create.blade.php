@@ -61,6 +61,15 @@
                     </div>
 
                     <div>
+                        <label for="interview_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Interview Date & Time (optional)</label>
+                        <input type="datetime-local" name="interview_date" id="interview_date" value="{{ old('interview_date') }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:bg-gray-700 dark:text-white">
+                        @error('interview_date')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="resume_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Resume (optional)</label>
                         <select name="resume_id" id="resume_id" class="mt-1 block w-full rounded-md border-gray-300 dark:bg-gray-700 dark:text-white">
                             <option value="">-- None --</option>

@@ -44,6 +44,12 @@
                         </dd>
                     </div>
                     <div>
+                        <dt class="text-sm text-gray-500">Interview Date</dt>
+                        <dd class="text-gray-900 dark:text-gray-100">
+                            {{ $application->interview_date ? \Carbon\Carbon::parse($application->interview_date)->format('M d, Y g:i A') : '—' }}
+                        </dd>
+</div>
+                    <div>
                         <dt class="text-sm text-gray-500">Resume</dt>
                         <dd class="text-gray-900 dark:text-gray-100">
                             {{ $application->resume->name ?? '—' }}

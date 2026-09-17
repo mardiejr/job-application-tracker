@@ -40,11 +40,12 @@ class JobApplicationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'company_id' => 'required|exists:companies,id',
-            'resume_id' => 'nullable|exists:resumes,id',
-            'position' => 'required|string|max:255',
-            'status' => 'required|in:applied,interviewing,offer,rejected,withdrawn',
-            'applied_date' => 'nullable|date',
+    'company_id' => 'required|exists:companies,id',
+    'resume_id' => 'nullable|exists:resumes,id',
+    'position' => 'required|string|max:255',
+    'status' => 'required|in:applied,interviewing,offer,rejected,withdrawn',
+    'applied_date' => 'nullable|date',
+    'interview_date' => 'nullable|date',
         ]);
 
         $validated['user_id'] = auth()->id();
@@ -78,6 +79,7 @@ class JobApplicationController extends Controller
             'position' => 'required|string|max:255',
             'status' => 'required|in:applied,interviewing,offer,rejected,withdrawn',
             'applied_date' => 'nullable|date',
+            'interview_date' => 'nullable|date',
         ]);
 
         $application->update($validated);
