@@ -6,6 +6,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CompanyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     return redirect()->route('applications.show', $notification->data['application_id']);
     })->name('notifications.read');
+
+    Route::resource('companies', CompanyController::class)->except(['show']);
 });
 
 Route::middleware('auth')->group(function () {
