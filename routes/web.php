@@ -22,6 +22,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/resumes', [ResumeController::class, 'index'])->name('resumes.index');
     Route::post('/resumes', [ResumeController::class, 'store'])->name('resumes.store');
     Route::delete('/resumes/{resume}', [ResumeController::class, 'destroy'])->name('resumes.destroy');
+    Route::post('/notifications/{id}/read', function ($id) {
+    $notification = auth()->user()->notifications()->findOrFail($id);
+    $notification->markAsRead();
+
+    return redirect()->route('applications.show', $notification->data['application_id']);
+    })->name('notifications.read');
 });
 
 Route::middleware('auth')->group(function () {
