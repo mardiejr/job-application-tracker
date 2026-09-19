@@ -28,7 +28,7 @@
 	<env name="DB_PORT" value="3306"/>
 	<env name="DB_DATABASE" value="job_application_tracker_test"/>
 	<env name="DB_USERNAME" value="root"/>
-	<env name="DB_PASSWORD" value="m@MySQL.root12**!?"/>
+	<env name="DB_PASSWORD" value="${DB_PASSWORD}"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
