@@ -131,7 +131,17 @@ php artisan test
 
 ## Screenshots
 
-*(Add dashboard, applications list, and company management screenshots here.)*
+Dashboard
+<img width="1170" height="841" alt="image" src="https://github.com/user-attachments/assets/fcae91b5-e588-46be-aede-b6f2755228f4" />
+
+Applications
+<img width="1168" height="782" alt="image" src="https://github.com/user-attachments/assets/228e055e-5a75-47bd-a5ef-73d9db462c30" />
+
+Resumes
+<img width="1205" height="670" alt="image" src="https://github.com/user-attachments/assets/86b791b6-abb1-41de-b3de-dde6c1bdc553" />
+
+Sample Companies
+<img width="1888" height="520" alt="image" src="https://github.com/user-attachments/assets/c0c790f0-f4c9-4215-a8e5-db9e99e640a3" />
 
 ## Author
 
