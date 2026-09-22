@@ -40,6 +40,10 @@ A full-stack web app for tracking job applications, built with Laravel. Users ca
 - Feature test suite covering authentication, CRUD operations, and validation
 - Isolated test database (separate from development data)
 
+## Design
+
+A consistent visual system is used throughout: a reusable color-coded status badge component, icon-based table/card actions (view, edit, delete, download), and matching empty-state illustrations across every list view (applications, companies, resumes, notifications).
+
 ## Database Structure
 
 ```
