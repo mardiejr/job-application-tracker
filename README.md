@@ -131,4 +131,4 @@ php artisan test
 
 ## Author
 
-MardieJr — BSIT student, STI College Santa Rosa
+Mardie Jr.
